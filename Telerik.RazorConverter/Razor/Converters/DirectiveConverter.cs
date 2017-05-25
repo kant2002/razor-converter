@@ -7,15 +7,13 @@
 
     public class DirectiveConverter : INodeConverter<IRazorNode>
     {
-        private IRazorDirectiveNodeFactory DirectiveNodeFactory
-        {
-            get;
-            set;
-        }
+        private IRazorDirectiveNodeFactory DirectiveNodeFactory { get; set; }
+        private IRazorTextNodeFactory TextNodeFactory { get; set; }
 
-        public DirectiveConverter(IRazorDirectiveNodeFactory nodeFactory)
+        public DirectiveConverter(IRazorDirectiveNodeFactory nodeFactory, IRazorTextNodeFactory textNodeFactory)
         {
             DirectiveNodeFactory = nodeFactory;
+            TextNodeFactory = textNodeFactory;
         }
 
         public IList<IRazorNode> ConvertNode(IWebFormsNode node)
@@ -26,33 +24,57 @@
 
             if (directiveNode != null)
             {
-                if (directiveNode.Attributes.ContainsKey("inherits"))
+                var attributes = directiveNode.Attributes;
+                if (attributes.ContainsKey("inherits"))
                 {
-                    var inheritsFrom = directiveNode.Attributes["inherits"];
-                    var viewPageGenericType = new Regex("System.Web.Mvc.(?:ViewPage|ViewUserControl)<(?<type>.*)>");
-                    var typeMatch = viewPageGenericType.Match(inheritsFrom);
-                    if (typeMatch.Success)
-                    {
-                        result.Add(DirectiveNodeFactory.CreateDirectiveNode("model", typeMatch.Result("${type}")));
-                    }
-                    else if (inheritsFrom != "System.Web.Mvc.ViewPage" && inheritsFrom != "System.Web.Mvc.ViewUserControl")
-                    {
-                        result.Add(DirectiveNodeFactory.CreateDirectiveNode("inherits", directiveNode.Attributes["inherits"]));
-                    }
+                    AddModelOrInheritsDirective(attributes, result);
                 }
-                else if (directiveNode.Attributes.ContainsKey("namespace") &&
+                else if (attributes.ContainsKey("namespace") &&
                          directiveNode.Directive == DirectiveType.Import)
                 {
-                    var imports = directiveNode.Attributes["namespace"];
+                    AddUsingDirective(attributes, result);
+                }
 
-                    if (!string.IsNullOrEmpty(imports))
-                    {
-                        result.Add(DirectiveNodeFactory.CreateDirectiveNode("using", directiveNode.Attributes["namespace"]));
-                    }
+                if (attributes.ContainsKey("masterpagefile"))
+                {
+                    AddLayoutDirective(attributes, result);
                 }
             }
 
             return result;
+        }
+
+        private void AddModelOrInheritsDirective(IDictionary<string, string> attributes, List<IRazorNode> result)
+        {
+            var inheritsFrom = attributes["inherits"];
+            var viewPageGenericType = new Regex("System.Web.Mvc.(?:ViewPage|ViewUserControl)<(?<type>.*)>");
+            var typeMatch = viewPageGenericType.Match(inheritsFrom);
+            if (typeMatch.Success)
+            {
+                result.Add(DirectiveNodeFactory.CreateDirectiveNode(DirectiveNames.MODEL, typeMatch.Result("${type}")));
+            }
+            else if (inheritsFrom != "System.Web.Mvc.ViewPage" && inheritsFrom != "System.Web.Mvc.ViewUserControl")
+            {
+                result.Add(DirectiveNodeFactory.CreateDirectiveNode(DirectiveNames.INHERITS, attributes["inherits"]));
+            }
+        }
+
+        private void AddUsingDirective(IDictionary<string, string> attributes, List<IRazorNode> result)
+        {
+            var imports = attributes["namespace"];
+
+            if (!string.IsNullOrEmpty(imports))
+            {
+                result.Add(DirectiveNodeFactory.CreateDirectiveNode(DirectiveNames.USING, attributes["namespace"]));
+            }
+        }
+
+        private void AddLayoutDirective(IDictionary<string, string> attributes, List<IRazorNode> result)
+        {
+            var layoutPath = TemplateSettings.Default.MasterToLayoutPath(attributes["masterpagefile"]);
+
+            result.Add(TextNodeFactory.CreateTextNode("\r\n"));
+            result.Add(DirectiveNodeFactory.CreateDirectiveNode(DirectiveNames.LAYOUT, layoutPath));
         }
 
         public bool CanConvertNode(IWebFormsNode node)

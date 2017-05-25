@@ -56,6 +56,8 @@
     <Compile Include="Razor\Converters\CodeGroupConverter.cs" />
     <Compile Include="Razor\Converters\ContentTagConverterConfiguration.cs" />
     <Compile Include="Razor\Converters\CommentNodeConverter.cs" />
+    <Compile Include="Razor\TemplateSettings.cs" />
+    <Compile Include="Razor\DirectiveNames.cs" />
     <Compile Include="Razor\Converters\IContentTagConverterConfiguration.cs" />
     <Compile Include="Razor\Converters\RazorNodeConverterProvider.cs" />
     <Compile Include="Razor\Converters\IRazorNodeConverterProvider.cs" />

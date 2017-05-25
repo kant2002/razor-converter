@@ -1,4 +1,6 @@
-﻿namespace Telerik.RazorConverter.Razor.Converters
+﻿using System.Linq;
+
+namespace Telerik.RazorConverter.Razor.Converters
 {
     using System.ComponentModel.Composition;
     using Telerik.RazorConverter.Razor.DOM;

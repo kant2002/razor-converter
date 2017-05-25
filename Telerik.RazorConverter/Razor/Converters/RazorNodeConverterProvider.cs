@@ -18,7 +18,7 @@
                                             IContentTagConverterConfiguration contentTagConverterConfig)
         {
             NodeConverters = new INodeConverter<IRazorNode>[] {
-                new DirectiveConverter(directiveNodeFactory),
+                new DirectiveConverter(directiveNodeFactory, textNodeFactory),
                 new ContentTagConverter(this, sectionNodeFactory, contentTagConverterConfig),
                 new CodeGroupConverter(this),
                 new CodeBlockConverter(codeNodeFactory),
