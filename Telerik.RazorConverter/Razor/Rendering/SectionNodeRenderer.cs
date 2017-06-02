@@ -25,7 +25,7 @@
 
             return (
                 sectionNode.ShouldRender ?
-                    string.Format("@RenderSection(\"{0}\", optional: true)\n{1}", sectionNode.Name, childContent) :
+                    string.Format("@RenderSection(\"{0}\", required: true)\n{1}", sectionNode.Name, childContent) :
                     string.Format("@section {0} {{\r\n{1}}}", sectionNode.Name, childContent) 
             );
         }
