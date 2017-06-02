@@ -1,4 +1,6 @@
-﻿namespace Telerik.RazorConverter.Razor.Converters
+﻿using System.Linq;
+
+namespace Telerik.RazorConverter.Razor.Converters
 {
     using System;
     using System.Collections.Generic;
@@ -78,7 +80,7 @@
 
                 iterateOverChildrens(convertedChildren, sectionNode);
             }
-            else if (string.Compare(contentPlaceHolderID, Configuration.BodyContentPlaceHolderID, true) != 0)
+            else if (Configuration.BodyContentPlaceHolderIDs.All(e => String.Compare(contentPlaceHolderID, e, StringComparison.OrdinalIgnoreCase) != 0))
             {
                 sectionNode = SectionNodeFactory.CreateSectionNode(contentPlaceHolderID);
 
@@ -89,10 +91,7 @@
             {
                 return new IRazorSectionNode[] { sectionNode };
             }
-            else
-            {
-                return convertedChildren;
-            }
+            return convertedChildren;
         }
 
         public bool CanConvertNode(IWebFormsNode node)

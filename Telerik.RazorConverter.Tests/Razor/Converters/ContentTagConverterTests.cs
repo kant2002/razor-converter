@@ -30,7 +30,7 @@
                 .Returns(new INodeConverter<IRazorNode>[] { childNodeConverterMock.Object });
 
             configurationMock = new Mock<IContentTagConverterConfiguration>();
-            configurationMock.SetupGet(c => c.BodyContentPlaceHolderID).Returns("MainContent");
+            configurationMock.SetupGet(c => c.BodyContentPlaceHolderIDs).Returns(new []{"MainContent"});
 
             converter = new ContentTagConverter(nodeConverterProviderMock.Object, sectionNodeFactoryMock.Object, configurationMock.Object);
 

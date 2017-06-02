@@ -5,7 +5,7 @@
     [Export(typeof(IContentTagConverterConfiguration))]
     public class ContentTagConverterConfiguration : IContentTagConverterConfiguration
     {
-        public string BodyContentPlaceHolderID
+        public string[] BodyContentPlaceHolderIDs
         {
             get;
             set;
@@ -13,7 +13,7 @@
 
         public ContentTagConverterConfiguration()
         {
-            BodyContentPlaceHolderID = "MainContent";
+            BodyContentPlaceHolderIDs = new []{"MainContent", "MasterContent"};
         }
     }
 }
