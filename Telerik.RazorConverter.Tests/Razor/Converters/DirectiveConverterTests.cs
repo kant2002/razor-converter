@@ -12,13 +12,15 @@
     {
         private readonly DirectiveConverter converter;
         private readonly Mock<IRazorDirectiveNodeFactory> nodeFactoryMock;
+        private readonly Mock<IRazorTextNodeFactory> nodeTextFactoryMock;
         private readonly Mock<IWebFormsDirectiveNode> pageDirectiveMock;
         private readonly IDictionary<string, string> attributesDictionary;
 
         public DirectiveConverterTests()
         {
             nodeFactoryMock = new Mock<IRazorDirectiveNodeFactory>();
-            converter = new DirectiveConverter(nodeFactoryMock.Object);
+            nodeTextFactoryMock = new Mock<IRazorTextNodeFactory>();
+            converter = new DirectiveConverter(nodeFactoryMock.Object, nodeTextFactoryMock.Object);
             attributesDictionary = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             pageDirectiveMock = new Mock<IWebFormsDirectiveNode>();
             pageDirectiveMock.SetupGet(n => n.Attributes).Returns(attributesDictionary);
