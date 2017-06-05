@@ -7,46 +7,42 @@ namespace aspx2razor {
     /// <summary>
     /// An object that will handle the traversing of directories and collection of files
     /// </summary>
-    public class DirectoryHandler {
-        private static IEnumerable<string> extensionFilter = new List<string>() {
-            ".aspx", ".ascx"
-        };
-
-        private string InputDirectory { get; set; }
-        private string OutputDirectory { get; set; }
+    public class DirectoryHandler
+    {
+        private readonly string inputDirectory;
+        private readonly string outputDirectory;
+        private readonly IEnumerable<string> extensionFilter;
 
         /// <summary>
         /// Initializes a new DirectoryHandler instance
         /// </summary>
         /// <param name="inputDirectory">The initial directory to start inspections at</param>
         /// <param name="outputDirectory">The output directory to output to</param>
-        public DirectoryHandler(string inputDirectory, string outputDirectory) {
-            InputDirectory = GetFullPathOrDefault(inputDirectory);
-
-            if(string.IsNullOrEmpty(outputDirectory)) {
-                OutputDirectory = InputDirectory;
-            } else {
-                OutputDirectory = Path.GetFullPath(outputDirectory);
-            }
+        /// <param name="extensionFilter">File extensions in format '.aspx', '.ascx'. Default - both format.</param>
+        public DirectoryHandler(string inputDirectory, string outputDirectory, IEnumerable<string> extensionFilter)
+        {
+            this.inputDirectory = GetFullPathOrDefault(inputDirectory);
+            this.outputDirectory = string.IsNullOrEmpty(outputDirectory) ? this.inputDirectory : Path.GetFullPath(outputDirectory);
+            this.extensionFilter = extensionFilter;
         }
 
         public IEnumerable<string> GetFiles(bool includeSubdirectories) {
-            return GetFiles(InputDirectory, includeSubdirectories);
+            return GetFiles(inputDirectory, includeSubdirectories);
         }
 
         public string GetOutputFileName(string fileName) {
             var fullFileName = Path.GetFullPath(fileName);
-            var relativeFileName = fullFileName.Remove(0, InputDirectory.Length + 1);
+            var relativeFileName = fullFileName.Remove(0, inputDirectory.Length + 1);
 
-            return Path.Combine(OutputDirectory, relativeFileName);
+            return Path.Combine(outputDirectory, relativeFileName);
         }
 
-        private static List<string> GetFiles(string inputDirectory, bool includeSubdirectories) {
+        private List<string> GetFiles(string inputDirectory, bool includeSubdirectories) {
             var files = GetFileRecursive(new List<string>(), inputDirectory, includeSubdirectories);
             return files;
         }
 
-        private static List<string> GetFileRecursive(List<string> list, string directoryPath, bool recursive) {
+        private List<string> GetFileRecursive(List<string> list, string directoryPath, bool recursive) {
             var directory = new DirectoryInfo(directoryPath);
             var files = directory.GetFiles().Where(file => extensionFilter.Contains(file.Extension));
 

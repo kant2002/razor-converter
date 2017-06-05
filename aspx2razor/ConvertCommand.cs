@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using ManyConsole;
 
@@ -10,9 +11,23 @@ namespace aspx2razor
         private const int Success = 0;
         private const int Failure = 2;
 
+        private static readonly IEnumerable<string> DefaultExtensionFilter = new[]
+        {
+            ".aspx",
+            ".ascx"
+        };
+
         public bool ConvertRecursively { get; set; }
         public string InputDirectory { get; set; }
         public string OutputDirectory { get; set; }
+
+        private IEnumerable<string> extensionsFilters;
+
+        public IEnumerable<string> ExtensionsFilters
+        {
+            get => extensionsFilters ?? DefaultExtensionFilter;
+            set => extensionsFilters = value;
+        }
 
         public ConvertCommand()
         {
@@ -30,6 +45,13 @@ namespace aspx2razor
                 "r|recursively", 
                 "Convert directories and their contents recursively", 
                 e => ConvertRecursively = true);
+            HasOption(
+                "e|extensions=",
+                @"Converted file's extensions in format "".aspx, .ascx"". By default - both formats.",
+                e =>
+                {
+                    ExtensionsFilters = e.Split(new[] {", "}, StringSplitOptions.RemoveEmptyEntries);
+                });
         }
 
         public override int Run(string[] remainingArguments)
@@ -39,7 +61,7 @@ namespace aspx2razor
                 DirectoryHandler directoryHandler;
                 try
                 {
-                    directoryHandler = new DirectoryHandler(InputDirectory, OutputDirectory);
+                    directoryHandler = new DirectoryHandler(InputDirectory, OutputDirectory, ExtensionsFilters);
                 }
                 catch (ArgumentException ex)
                 {
