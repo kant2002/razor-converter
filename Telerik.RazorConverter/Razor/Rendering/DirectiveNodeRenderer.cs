@@ -18,7 +18,10 @@ namespace Telerik.RazorConverter.Razor.Rendering
         public bool CanRenderNode(IRazorNode node)
         {
             var directiveNode = node as IRazorDirectiveNode;
-            return directiveNode != null && (directiveNode.Directive != DirectiveNames.LAYOUT || !string.Equals(directiveNode.Parameters, TemplateSettings.CurrentSettings.DefaultLayoutPath, StringComparison.OrdinalIgnoreCase));
+            return directiveNode != null &&
+                !(directiveNode.Directive == DirectiveNames.LAYOUT && 
+                !TemplateSettings.CurrentSettings.ShowDefaultLayout &&
+                string.Equals(directiveNode.Parameters, TemplateSettings.CurrentSettings.DefaultLayoutPath, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

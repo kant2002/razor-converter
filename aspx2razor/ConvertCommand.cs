@@ -27,6 +27,7 @@ namespace aspx2razor
         public string DefaultMasterName { get; set; } = "Default.Master";
         public string DefaultLayoutName { get; set; } = "DefaultLayout.cshtml";
         public string LayoutSuffix { get; set; } = "Layout";
+        public bool ShowDefaultLayout { get; set; }
 
         private IEnumerable<string> extensionsFilters;
 
@@ -77,12 +78,16 @@ namespace aspx2razor
                 "lp|layoutPrefix=",
                 @"Layout prefix. Used for build name of Layouts. F.e. if layoutPrefix = ""Layout"" ""Default.Master"" will convert to ""DefaultLayout.cshtml"". By default - ""Layout""",
                 e => LayoutSuffix = e);
+            HasOption(
+                "sdl|showDefaultLayout",
+                @"Setup explicit section declaration for default layouts. By default - disabled",
+                e => ShowDefaultLayout = true);
         }
 
         public override int? OverrideAfterHandlingArgumentsBeforeRun(string[] remainingArguments)
         {
             TemplateSettings.CurrentSettings = new TemplateSettings(MasterFolderPath,
-                LayoutFolderPath, DefaultMasterName, DefaultLayoutName, LayoutSuffix);
+                LayoutFolderPath, DefaultMasterName, DefaultLayoutName, LayoutSuffix, ShowDefaultLayout);
             return base.OverrideAfterHandlingArgumentsBeforeRun(remainingArguments);
         }
 

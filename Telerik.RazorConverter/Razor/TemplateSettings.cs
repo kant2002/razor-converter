@@ -4,13 +4,13 @@ namespace Telerik.RazorConverter.Razor
 {
     public class TemplateSettings
     {
-        public TemplateSettings(string masterFolderPath, string layoutFolderPath, string defaultMasterName,
-            string defaultLayoutName, string layoutSuffix)
+        public TemplateSettings(string masterFolderPath, string layoutFolderPath, string defaultMasterName, string defaultLayoutName, string layoutSuffix, bool showDefaultLayout)
         {
             MasterFolderPath = masterFolderPath;
             LayoutFolderPath = layoutFolderPath;
             DefaultMasterName = defaultMasterName;
             LayoutSuffix = layoutSuffix;
+            ShowDefaultLayout = showDefaultLayout;
             DefaultLayoutName = defaultLayoutName;
         }
 
@@ -20,6 +20,7 @@ namespace Telerik.RazorConverter.Razor
         public string DefaultLayoutName { get; }
         public string DefaultLayoutPath => $"{LayoutFolderPath}/{DefaultLayoutName}";
         public string LayoutSuffix { get; }
+        public bool ShowDefaultLayout { get; }
 
         public string MasterToLayoutPath(string masterPageFilePath)
         {
@@ -28,9 +29,6 @@ namespace Telerik.RazorConverter.Razor
             return $"{LayoutFolderPath}/{layoutName}";
         }
 
-        private static readonly TemplateSettings Default = new TemplateSettings("~/Views/Shared/Master",
-            "~/Views/Shared/Layout", "Default.Master", "DefaultLayout.cshtml", "Layout");
-
-        public static TemplateSettings CurrentSettings = Default;
+        public static TemplateSettings CurrentSettings;
     }
 }
