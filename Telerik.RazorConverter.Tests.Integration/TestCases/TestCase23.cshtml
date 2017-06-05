@@ -7,10 +7,10 @@
                     <p class="note">This is just an example, sent data will <strong>not</strong> be saved.</p>
 
                     <label for="name">Name:</label>
-                    @Html.TextBox("name") 
+                    @(Html.TextBox("name")) 
 
                     <label for="email">E-mail:</label>
-                    @Html.TextBox("email") 
+                    @(Html.TextBox("email")) 
 
                     <label for="comment-value">Comments:</label>
                     @(Html.Telerik().Editor()
@@ -42,9 +42,9 @@
         <h3>Feedback:</h3>
     
         <p>
-            Name: @ViewData["name"]<br />
-            E-mail: @ViewData["email"]<br />
-            Comment: @ViewData["comment"] 
+            Name: @(ViewData["name"])<br />
+            E-mail: @(ViewData["email"])<br />
+            Comment: @(ViewData["comment"]) 
         </p>
     </div>
 }

@@ -3,7 +3,7 @@
 
 
     @using (Html.Configurator("Validation summary").Begin()) { 
-        @Html.ValidationSummary() 
+        @(Html.ValidationSummary())
      } 
     
     @using ( Html.BeginForm() ) { 
@@ -12,17 +12,17 @@
 
             <ul id="field-list">
                 <li>
-                    @Html.LabelFor(e => e.FirstName) 
-                    @Html.TextBoxFor(e => e.FirstName) 
-                    <div class="error">@Html.ValidationMessageFor(e => e.FirstName, "The FirstName field is required.")</div>
+                    @(Html.LabelFor(e => e.FirstName)) 
+                    @(Html.TextBoxFor(e => e.FirstName)) 
+                    <div class="error">@(Html.ValidationMessageFor(e => e.FirstName, "The FirstName field is required."))</div>
                 </li>
                 <li>
-                    @Html.LabelFor(e => e.LastName) 
-                    @Html.TextBoxFor(e => e.LastName) 
-                    <div class="error">@Html.ValidationMessageFor(e => e.LastName, "The LastName field is required.")</div>
+                    @(Html.LabelFor(e => e.LastName)) 
+                    @(Html.TextBoxFor(e => e.LastName)) 
+                    <div class="error">@(Html.ValidationMessageFor(e => e.LastName, "The LastName field is required."))</div>
                 </li>
                 <li>
-                    @Html.LabelFor(e => e.Notes)
+                    @(Html.LabelFor(e => e.Notes))
                     @(Html.Telerik().Editor()
                             .Name("Notes")
                             .HtmlAttributes(new { style = "float: left; width: 345px;" })
@@ -33,7 +33,7 @@
                                 .CreateLink().Unlink()
                             )
                     )
-                    <div class="error">@Html.ValidationMessageFor(e => e.Notes, "The Notes field is required.")</div>
+                    <div class="error">@(Html.ValidationMessageFor(e => e.Notes, "The Notes field is required."))</div>
                 </li>
                 <li class="action-row">
                     <button class="t-button t-state-default" type="submit">Save</button>
@@ -44,9 +44,9 @@
 
     @if (ViewData["notes"] != null)
        { 
-       <p><strong>FirstName : @ViewData["FirstName"]</strong></p>
-       <p><strong>LastName : @ViewData["LastName"]</strong></p>
-       <p><strong>Notes : @ViewData["Notes"]</strong></p>
+       <p><strong>FirstName : @(ViewData["FirstName"])</strong></p>
+       <p><strong>LastName : @(ViewData["LastName"])</strong></p>
+       <p><strong>Notes : @(ViewData["Notes"])</strong></p>
      } 
 
 

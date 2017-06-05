@@ -7,15 +7,9 @@
         public string RenderNode(IRazorNode node)
         {
             var srcNode = node as IRazorExpressionNode;
-            var formatString = "@{0}";
             var expression = srcNode.Expression;
 
-            if (srcNode.IsMultiline)
-            {
-                formatString = "@({0})";
-            }
-
-            return string.Format(formatString, expression);
+            return $"@({expression})";
         }
 
         public bool CanRenderNode(IRazorNode node)

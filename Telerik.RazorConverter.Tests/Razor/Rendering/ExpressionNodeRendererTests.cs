@@ -33,7 +33,7 @@
         {
             expressionNodeMock.SetupGet(n => n.Expression).Returns("DateTime.Now");
 
-            renderer.RenderNode(expressionNodeMock.Object).ShouldEqual("@DateTime.Now");
+            renderer.RenderNode(expressionNodeMock.Object).ShouldEqual("@(DateTime.Now)");
         }
 
         [Fact]

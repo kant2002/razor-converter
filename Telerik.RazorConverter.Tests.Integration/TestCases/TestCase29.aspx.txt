@@ -1,0 +1,13 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Master/Default.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<OrderDto>>" %>
+<%@ Import Namespace="Project.Namespace.To.Models" %>
+
+<asp:content contentplaceholderid="scriptcontent" runat="server">
+<style type="text/css">
+		.twitter-icon
+        {
+            background: url('@(Url.Content("~/Content/Grid/ExternalServiceTwitter/twitter-logo.png"))') no-repeat 0 0;
+		}
+	</style>
+	<div id="<%=Model.Id%>" date="<%=Model.IsSomeCondition ? "true" : "false"%>">
+    </div>
+</asp:content>
