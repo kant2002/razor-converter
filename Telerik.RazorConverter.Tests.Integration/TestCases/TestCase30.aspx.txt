@@ -1,0 +1,6 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Master/default.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<OrderDto>>" %>
+<%@ Import Namespace="Project.Namespace.To.Models" %>
+
+<asp:content contentplaceholderid="scriptcontent" runat="server">
+<!--layout name is not case sensitive-->
+</asp:content>

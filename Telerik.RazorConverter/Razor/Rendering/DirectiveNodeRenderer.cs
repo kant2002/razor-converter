@@ -1,4 +1,5 @@
-﻿using Telerik.RazorConverter.Razor.Converters;
+﻿using System;
+using Telerik.RazorConverter.Razor.Converters;
 
 namespace Telerik.RazorConverter.Razor.Rendering
 {
@@ -17,7 +18,7 @@ namespace Telerik.RazorConverter.Razor.Rendering
         public bool CanRenderNode(IRazorNode node)
         {
             var directiveNode = node as IRazorDirectiveNode;
-            return directiveNode != null && (directiveNode.Directive != DirectiveNames.LAYOUT || directiveNode.Parameters != TemplateSettings.Default.DefaultLayoutPath);
+            return directiveNode != null && (directiveNode.Directive != DirectiveNames.LAYOUT || !string.Equals(directiveNode.Parameters, TemplateSettings.Default.DefaultLayoutPath, StringComparison.OrdinalIgnoreCase));
         }
     }
 }
