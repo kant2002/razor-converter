@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using ManyConsole;
+using Telerik.RazorConverter.Razor;
 
 namespace aspx2razor
 {
@@ -20,6 +21,12 @@ namespace aspx2razor
         public bool ConvertRecursively { get; set; }
         public string InputDirectory { get; set; }
         public string OutputDirectory { get; set; }
+
+        public string MasterFolderPath { get; set; } = "~/Views/Shared/Master";
+        public string LayoutFolderPath { get; set; } = "~/Views/Shared/Layout";
+        public string DefaultMasterName { get; set; } = "Default.Master";
+        public string DefaultLayoutName { get; set; } = "DefaultLayout.cshtml";
+        public string LayoutSuffix { get; set; } = "Layout";
 
         private IEnumerable<string> extensionsFilters;
 
@@ -48,10 +55,35 @@ namespace aspx2razor
             HasOption(
                 "e|extensions=",
                 @"Converted file's extensions in format "".aspx, .ascx"". By default - both formats.",
-                e =>
-                {
-                    ExtensionsFilters = e.Split(new[] {", "}, StringSplitOptions.RemoveEmptyEntries);
-                });
+                e => ExtensionsFilters = e.Split(new[] {", "}, StringSplitOptions.RemoveEmptyEntries));
+
+            HasOption(
+                "mfp|masterFolderPath=",
+                @"Master folder path. By default - ""~/Views/Shared/Master""",
+                e => MasterFolderPath = e);
+            HasOption(
+                "lfp|layoutFolderPath=",
+                @"Layout folder path. By default - ""~/Views/Shared/Layout""",
+                e => LayoutFolderPath = e);
+            HasOption(
+                "dmn|defaultMasterName=",
+                @"Default master file name. By default - ""Default.Master""",
+                e => DefaultMasterName = e);
+            HasOption(
+                "dln|defaultLayoutName=",
+                @"Layout folder path. By default - ""DefaultLayout.cshtml""",
+                e => DefaultLayoutName = e);
+            HasOption(
+                "lp|layoutPrefix=",
+                @"Layout prefix. Used for build name of Layouts. F.e. if layoutPrefix = ""Layout"" ""Default.Master"" will convert to ""DefaultLayout.cshtml"". By default - ""Layout""",
+                e => LayoutSuffix = e);
+        }
+
+        public override int? OverrideAfterHandlingArgumentsBeforeRun(string[] remainingArguments)
+        {
+            TemplateSettings.CurrentSettings = new TemplateSettings(MasterFolderPath,
+                LayoutFolderPath, DefaultMasterName, DefaultLayoutName, LayoutSuffix);
+            return base.OverrideAfterHandlingArgumentsBeforeRun(remainingArguments);
         }
 
         public override int Run(string[] remainingArguments)

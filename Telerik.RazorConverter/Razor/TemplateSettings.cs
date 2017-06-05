@@ -28,7 +28,9 @@ namespace Telerik.RazorConverter.Razor
             return $"{LayoutFolderPath}/{layoutName}";
         }
 
-        public static readonly TemplateSettings Default = new TemplateSettings("~/Views/Shared/Master",
+        private static readonly TemplateSettings Default = new TemplateSettings("~/Views/Shared/Master",
             "~/Views/Shared/Layout", "Default.Master", "DefaultLayout.cshtml", "Layout");
+
+        public static TemplateSettings CurrentSettings = Default;
     }
 }

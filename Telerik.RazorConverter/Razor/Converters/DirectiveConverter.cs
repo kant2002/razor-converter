@@ -71,7 +71,7 @@
 
         private void AddLayoutDirective(IDictionary<string, string> attributes, List<IRazorNode> result)
         {
-            var layoutPath = TemplateSettings.Default.MasterToLayoutPath(attributes["masterpagefile"]);
+            var layoutPath = TemplateSettings.CurrentSettings.MasterToLayoutPath(attributes["masterpagefile"]);
 
             result.Add(TextNodeFactory.CreateTextNode("\r\n"));
             result.Add(DirectiveNodeFactory.CreateDirectiveNode(DirectiveNames.LAYOUT, layoutPath));
