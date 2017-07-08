@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{8C7D4819-0256-4CFC-9F3D-00CFB7A41D0F}"
 	ProjectSection(SolutionItems) = preProject
 		References\Moq.dll = References\Moq.dll
@@ -23,6 +25,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestItems", "TestItems", "{02F8810D-BE2D-4D6E-9EF7-7A7DBA8502A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4DA0538-E425-4E71-A508-0D024B125043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualStudio.Extension", "VisualStudio.Extension\VisualStudio.Extension.csproj", "{EBEEC401-0471-4E93-8A1E-BC3DDD994C13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,6 +88,18 @@ Global
 		{D41C5C1A-83E4-43E4-AE54-2FC44CE87BA8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D41C5C1A-83E4-43E4-AE54-2FC44CE87BA8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D41C5C1A-83E4-43E4-AE54-2FC44CE87BA8}.Release|x86.ActiveCfg = Release|Any CPU
+		{EBEEC401-0471-4E93-8A1E-BC3DDD994C13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBEEC401-0471-4E93-8A1E-BC3DDD994C13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBEEC401-0471-4E93-8A1E-BC3DDD994C13}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EBEEC401-0471-4E93-8A1E-BC3DDD994C13}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EBEEC401-0471-4E93-8A1E-BC3DDD994C13}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EBEEC401-0471-4E93-8A1E-BC3DDD994C13}.Debug|x86.Build.0 = Debug|Any CPU
+		{EBEEC401-0471-4E93-8A1E-BC3DDD994C13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBEEC401-0471-4E93-8A1E-BC3DDD994C13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBEEC401-0471-4E93-8A1E-BC3DDD994C13}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EBEEC401-0471-4E93-8A1E-BC3DDD994C13}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EBEEC401-0471-4E93-8A1E-BC3DDD994C13}.Release|x86.ActiveCfg = Release|Any CPU
+		{EBEEC401-0471-4E93-8A1E-BC3DDD994C13}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

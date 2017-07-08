@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  
+  <Commands package="guidConverToRazorCommandPackage">
+    <Groups>
+      <Group guid="guidConverToRazorCommandPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_ITEMNODE" />
+      </Group>
+    </Groups>
+    <Buttons>
+      <Button guid="guidConverToRazorCommandPackageCmdSet" id="ConverToRazorCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidConverToRazorCommandPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Conver to Razor</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\ConverToRazorCommand.png" usedList="bmpPic1"/>
+    </Bitmaps>
+  </Commands>
+  
+  <Symbols>
+    <GuidSymbol name="guidConverToRazorCommandPackage" value="{e3de98bf-e931-4bf0-bc58-09219dfccd40}" />
+    <GuidSymbol name="guidConverToRazorCommandPackageCmdSet" value="{ac904529-8f84-4cf5-b288-a02f1274bfd8}">
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="ConverToRazorCommandId" value="0x0100" />
+    </GuidSymbol>
+    <GuidSymbol name="guidImages" value="{c460b06b-c657-4864-bb28-80c1aeb15c0e}" >
+      <IDSymbol name="bmpPic1" value="1" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
