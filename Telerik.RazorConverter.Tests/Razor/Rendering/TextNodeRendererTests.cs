@@ -1,10 +1,11 @@
-﻿namespace Telerik.RazorConverter.Tests.Razor
-{
-    using Moq;
-    using Telerik.RazorConverter.Razor.DOM;
-    using Telerik.RazorConverter.Razor.Rendering;
-    using Xunit;
+﻿using Moq;
+using RazorConverter.Tests.Common.XunitExtensions;
+using Telerik.RazorConverter.Razor.DOM;
+using Telerik.RazorConverter.Razor.Rendering;
+using Xunit;
 
+namespace Telerik.RazorConverter.Tests.Razor.Rendering
+{
     public class TextNodeRendererTests
     {
         private readonly TextNodeRenderer renderer;

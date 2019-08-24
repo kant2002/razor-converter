@@ -1,4 +1,6 @@
-﻿namespace Telerik.RazorConverter.Tests.Razor.Converters
+﻿using RazorConverter.Tests.Common.XunitExtensions;
+
+namespace Telerik.RazorConverter.Tests.Razor.Converters
 {
     using Moq;
     using Telerik.RazorConverter.Razor.Converters;

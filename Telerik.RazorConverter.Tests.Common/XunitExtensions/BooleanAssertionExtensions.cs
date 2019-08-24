@@ -1,4 +1,6 @@
-﻿namespace Xunit
+﻿using Xunit;
+
+namespace RazorConverter.Tests.Common.XunitExtensions
 {
     /// <summary>
     /// Extensions which provide assertions to classes derived from <see cref="bool"/>.

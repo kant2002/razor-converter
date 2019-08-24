@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using ManyConsole;
 
 namespace aspx2razor {

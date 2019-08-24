@@ -1,4 +1,6 @@
-﻿namespace Telerik.RazorConverter.Tests.WebForms
+﻿using RazorConverter.Tests.Common.XunitExtensions;
+
+namespace Telerik.RazorConverter.Tests.WebForms
 {
     using Moq;
     using System.Collections.Generic;

@@ -1,12 +1,11 @@
-﻿namespace Telerik.RazorConverter.Tests.Razor
-{
-    using Moq;
-    using System.Collections.Generic;
-    using Telerik.RazorConverter;
-    using Telerik.RazorConverter.Razor.DOM;
-    using Telerik.RazorConverter.Razor.Rendering;
-    using Xunit;
+﻿using System.Collections.Generic;
+using Moq;
+using Telerik.RazorConverter.Razor.DOM;
+using Telerik.RazorConverter.Razor.Rendering;
+using Xunit;
 
+namespace Telerik.RazorConverter.Tests.Razor.Rendering
+{
     public class RazorViewRendererTests
     {
         private readonly RazorViewRenderer viewRenderer;

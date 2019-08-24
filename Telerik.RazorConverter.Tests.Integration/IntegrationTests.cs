@@ -1,16 +1,16 @@
-﻿namespace RazorConverter.Core.Tests
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.Composition;
-    using System.ComponentModel.Composition.Hosting;
-    using System.IO;
-    using System.Linq;
-    using Telerik.RazorConverter;
-    using Telerik.RazorConverter.Razor.DOM;
-    using Xunit;
-    using Xunit.Extensions;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.IO;
+using System.Linq;
+using RazorConverter.Tests.Common.XunitExtensions;
+using Telerik.RazorConverter;
+using Telerik.RazorConverter.Razor.DOM;
+using Xunit.Extensions;
 
+namespace RazorConverter.IntegrationTests
+{
     public class IntegrationTests
     {
         [Import]
@@ -45,10 +45,10 @@
         {
             get
             {
-                var testCasesFolder = new DirectoryInfo("..\\..\\TestCases");
+                var testCasesFolder = new DirectoryInfo("..\\..\\..\\TestCases");
                 foreach (var inputFile in testCasesFolder.EnumerateFiles("*.aspx.txt"))
                 {
-                    var referenceFileName = inputFile.FullName.Replace(".aspx.txt", ".cshtml");
+                    var referenceFileName = inputFile.FullName.Replace(".aspx.txt", ".cshtml.txt");
                     yield return new object[] {
                         inputFile.Name,
                         File.ReadAllText(inputFile.FullName),

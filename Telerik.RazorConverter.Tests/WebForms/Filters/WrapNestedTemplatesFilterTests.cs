@@ -1,4 +1,6 @@
-﻿namespace Telerik.RazorConverter.Tests.WebForms.Filters
+﻿using RazorConverter.Tests.Common.XunitExtensions;
+
+namespace Telerik.RazorConverter.Tests.WebForms.Filters
 {
     using Moq;
     using Telerik.RazorConverter.WebForms.DOM;

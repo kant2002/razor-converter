@@ -1,8 +1,9 @@
-﻿namespace Xunit
-{
-    using System.Collections;
-    using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Xunit;
 
+namespace RazorConverter.Tests.Common.XunitExtensions
+{
     /// <summary>
     /// Extensions which provide assertions to classes derived from <see cref="IEnumerable"/> and <see cref="IEnumerable&lt;T&gt;"/>.
     /// </summary>

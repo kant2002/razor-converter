@@ -1,4 +1,6 @@
-﻿namespace Telerik.RazorConverter.Tests.Razor.Converters
+﻿using RazorConverter.Tests.Common.XunitExtensions;
+
+namespace Telerik.RazorConverter.Tests.Razor.Converters
 {
     using Moq;
     using System.Collections.Generic;
@@ -25,7 +27,8 @@
             nodeConverterProviderMock = new Mock<IRazorNodeConverterProvider>();
             nodeConverterProviderMock.SetupGet(p => p.NodeConverters)
                 .Returns(new INodeConverter<IRazorNode>[] { childNodeConverterMock.Object });
-
+            converter = new ContentTagConverter(nodeConverterProviderMock.Object, sectionNodeFactoryMock.Object, new ContentTagConverterConfiguration());
+            
             contentTagChildren = new List<IWebFormsNode>();
             contentTagMockAttributes = new Dictionary<string, string>() { { "ContentPlaceHolderID", "HeadContent" } };
 

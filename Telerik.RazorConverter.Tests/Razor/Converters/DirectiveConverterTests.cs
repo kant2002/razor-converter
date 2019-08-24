@@ -1,13 +1,14 @@
-﻿namespace Telerik.RazorConverter.Tests.Converters
-{
-    using Moq;
-    using System;
-    using System.Collections.Generic;
-    using Telerik.RazorConverter.Razor.Converters;
-    using Telerik.RazorConverter.Razor.DOM;
-    using Telerik.RazorConverter.WebForms.DOM;
-    using Xunit;
+﻿using System;
+using System.Collections.Generic;
+using Moq;
+using RazorConverter.Tests.Common.XunitExtensions;
+using Telerik.RazorConverter.Razor.Converters;
+using Telerik.RazorConverter.Razor.DOM;
+using Telerik.RazorConverter.WebForms.DOM;
+using Xunit;
 
+namespace Telerik.RazorConverter.Tests.Razor.Converters
+{
     public class DirectiveConverterTests
     {
         private readonly DirectiveConverter converter;

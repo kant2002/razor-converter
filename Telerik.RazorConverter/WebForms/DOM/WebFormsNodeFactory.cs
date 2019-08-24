@@ -1,12 +1,12 @@
-﻿namespace Telerik.RazorConverter.WebForms.Parsing
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.Composition;
-    using System.Linq;
-    using System.Text.RegularExpressions;
-    using Telerik.RazorConverter.WebForms.DOM;   
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.Linq;
+using System.Text.RegularExpressions;
+using Telerik.RazorConverter.WebForms.Parsing;
 
+namespace Telerik.RazorConverter.WebForms.DOM
+{
     [Export(typeof(IWebFormsNodeFactory))]
     public class WebFormsNodeFactory : IWebFormsNodeFactory
     {

@@ -1,11 +1,12 @@
-﻿namespace RazorConverter.WebForms.Test
+﻿using Moq;
+using RazorConverter.Tests.Common.XunitExtensions;
+using Telerik.RazorConverter.WebForms.DOM;
+using Telerik.RazorConverter.WebForms.Filters;
+using Telerik.RazorConverter.WebForms.Parsing;
+using Xunit;
+
+namespace Telerik.RazorConverter.Tests.WebForms
 {
-    using Moq;
-    using Telerik.RazorConverter.WebForms.DOM;
-    using Telerik.RazorConverter.WebForms.Filters;
-    using Telerik.RazorConverter.WebForms.Parsing;
-    using Xunit;
-    
     public class WebFormsParserTests
     {
         private readonly Mock<IWebFormsNodeFilterProvider> filterProviderMock;

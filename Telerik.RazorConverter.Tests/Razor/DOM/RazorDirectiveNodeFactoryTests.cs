@@ -1,4 +1,6 @@
-﻿namespace Telerik.RazorConverter.Tests.Razor.DOM
+﻿using RazorConverter.Tests.Common.XunitExtensions;
+
+namespace Telerik.RazorConverter.Tests.Razor.DOM
 {
     using Telerik.RazorConverter.Razor.DOM;
     using Xunit;
