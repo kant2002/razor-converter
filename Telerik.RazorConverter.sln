@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30330.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{8C7D4819-0256-4CFC-9F3D-00CFB7A41D0F}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,15 +12,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 		References\xunit.extensions.xml = References\xunit.extensions.xml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telerik.RazorConverter", "Telerik.RazorConverter\Telerik.RazorConverter.csproj", "{88630458-D5BE-43B0-A7FB-BC0DFE6CB62E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telerik.RazorConverter", "Telerik.RazorConverter\Telerik.RazorConverter.csproj", "{88630458-D5BE-43B0-A7FB-BC0DFE6CB62E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telerik.RazorConverter.Tests", "Telerik.RazorConverter.Tests\Telerik.RazorConverter.Tests.csproj", "{2445EA5B-53A9-4522-B0B8-342C1241A13A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telerik.RazorConverter.Tests", "Telerik.RazorConverter.Tests\Telerik.RazorConverter.Tests.csproj", "{2445EA5B-53A9-4522-B0B8-342C1241A13A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aspx2razor", "aspx2razor\aspx2razor.csproj", "{5E999157-A2E2-431D-A5C3-87EF79C62A05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aspx2razor", "aspx2razor\aspx2razor.csproj", "{5E999157-A2E2-431D-A5C3-87EF79C62A05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telerik.RazorConverter.Tests.Common", "Telerik.RazorConverter.Tests.Common\Telerik.RazorConverter.Tests.Common.csproj", "{B30D861F-7D12-436A-BC5A-930D48291037}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telerik.RazorConverter.Tests.Common", "Telerik.RazorConverter.Tests.Common\Telerik.RazorConverter.Tests.Common.csproj", "{B30D861F-7D12-436A-BC5A-930D48291037}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Telerik.RazorConverter.Tests.Integration", "Telerik.RazorConverter.Tests.Integration\Telerik.RazorConverter.Tests.Integration.csproj", "{D41C5C1A-83E4-43E4-AE54-2FC44CE87BA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telerik.RazorConverter.Tests.Integration", "Telerik.RazorConverter.Tests.Integration\Telerik.RazorConverter.Tests.Integration.csproj", "{D41C5C1A-83E4-43E4-AE54-2FC44CE87BA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,9 +52,10 @@ Global
 		{2445EA5B-53A9-4522-B0B8-342C1241A13A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{2445EA5B-53A9-4522-B0B8-342C1241A13A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2445EA5B-53A9-4522-B0B8-342C1241A13A}.Release|x86.ActiveCfg = Release|Any CPU
-		{5E999157-A2E2-431D-A5C3-87EF79C62A05}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{5E999157-A2E2-431D-A5C3-87EF79C62A05}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{5E999157-A2E2-431D-A5C3-87EF79C62A05}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{5E999157-A2E2-431D-A5C3-87EF79C62A05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E999157-A2E2-431D-A5C3-87EF79C62A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E999157-A2E2-431D-A5C3-87EF79C62A05}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5E999157-A2E2-431D-A5C3-87EF79C62A05}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{5E999157-A2E2-431D-A5C3-87EF79C62A05}.Debug|x86.ActiveCfg = Debug|x86
 		{5E999157-A2E2-431D-A5C3-87EF79C62A05}.Debug|x86.Build.0 = Debug|x86
 		{5E999157-A2E2-431D-A5C3-87EF79C62A05}.Release|Any CPU.ActiveCfg = Release|x86
@@ -85,5 +86,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15F380A4-77AF-4F37-B44E-FE24003D7BCB}
 	EndGlobalSection
 EndGlobal

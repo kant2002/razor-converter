@@ -7,7 +7,7 @@ using System.Linq;
 using RazorConverter.Tests.Common.XunitExtensions;
 using Telerik.RazorConverter;
 using Telerik.RazorConverter.Razor.DOM;
-using Xunit.Extensions;
+using Xunit;
 
 namespace RazorConverter.IntegrationTests
 {
@@ -59,7 +59,7 @@ namespace RazorConverter.IntegrationTests
         }
 
         [Theory]
-        [PropertyData("TestFiles")]
+        [MemberData(nameof(TestFiles))]
         public void Should_produce_expected_result(string caseName, string inputFile, string expectedResult)
         {
             var webFormsDocument = Parser.Parse(inputFile);
